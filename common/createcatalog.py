@@ -12,6 +12,13 @@ class MobileStatistical(ReadFile):
             self.PERIODIC = '002'
             self.PROGRAMINFO = '003'
 
+    def write_data(self):
+        d = os.path.splitdrive(r'C:\Users\wj\Desktop\henan_20180506\PERIODIC')
+        d = d[1].split('\\')
+        base_dir = d[-1]
+        
+        self.file_00()
+
 
 class SoloBoot:
     """
