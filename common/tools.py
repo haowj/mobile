@@ -20,8 +20,10 @@ class CommonTool:
         for data in self.__get_summary_file():
             if getattr(data, '__iter__', None):
                 for line in data:
-                    yield line.decode(encoding='utf-8').rstrip('\n').split('|')
-                    # yield line.decode(encoding='gbk').rstrip('\n').split('|')
+                    try:
+                        yield line.decode(encoding='utf-8').rstrip('\n').split('|')
+                    except EOFError:
+                        yield line.decode(encoding='gbk').rstrip('\n').split('|')
             else:
                 print('data value is none')
 
@@ -37,8 +39,11 @@ class CommonTool:
     def __read_log_file(self, path):
         if os.path.exists(path):
             with gzip.open(path, 'r') as f:
-                for line in f:
-                    yield line
+                try:
+                    for line in f:
+                        yield line
+                except:
+                    pass
         else:
             print('the path [{}] is not exist!'.format(path))
 

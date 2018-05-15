@@ -3,21 +3,36 @@ import yaml
 import xlwt
 import os
 import gzip
+
+from common.reads import ReadFile
 from common.tools import CommonTool
-path = r'C:\Users\pactera\Desktop\henan_20180506\PERIODIC'
-
-data = os.listdir(path)
-
-
-def read_bb(i):
-    with gzip.open(r'C:\Users\pactera\Desktop\henan_20180506\PERIODIC\%s' % i, 'r') as fin:
-        for t in fin:
-            yield t
-
-
-for i in read_bb(data[7]):
+path = r'C:\Users\pactera\Desktop\henan_20180506\1'
+file = ReadFile(path)
+data = file.file_00()
+for i in data:
     print(i)
 
+
+
+# data = os.listdir(path)
+#
+#
+# def read_bb(i):
+#
+#     with gzip.open(r'C:\Users\pactera\Desktop\henan_20180506\1\%s' % i) as fin:
+#         try:
+#             for t in fin:
+#                 yield t
+#         except EOFError:
+#             pass
+#
+# con = 0
+# for i in data:
+#     for db in read_bb(i):
+#         print(db)
+#         print(db[11:13])
+#     # print(next(read_bb(i)))
+# print(con)
 # co = 1
 # for i in data:
 #     print(next(read_bb(i)))

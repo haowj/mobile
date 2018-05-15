@@ -156,6 +156,8 @@ class Storage:
         vl_dict = dict()
         vl_dict['牌照方编码'] = dict()
         for i in self.data:
+            if len(i) < 34:
+                continue
             if i[10] == '':
                 i[10] = 0
             if i[11] == '':
