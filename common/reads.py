@@ -7,6 +7,14 @@ class ReadFile(object):
     def __init__(self, catalog):
         self.catalog = catalog
 
+    def disassembly_file(self):
+        filename_list = os.listdir(self.catalog)
+        for i in range(len(filename_list)):
+            if filename_list[i][-2:] == 'gz':
+                path = os.path.join(self.catalog, filename_list[i])
+                if os.path.isfile(path):
+                    yield self.__read_file(path)
+
     def file_00(self):
         for data in self.__catalog_file():
             if getattr(data, '__iter__', None):
@@ -24,6 +32,18 @@ class ReadFile(object):
             if getattr(data, '__iter__', None):
                 for line in data:
                     if line[11:13] == b'01':
+                        try:
+                            yield line.decode(encoding='utf-8').rstrip('\n').split('|')
+                        except EOFError:
+                            yield line.decode(encoding='gbk').rstrip('\n').split('|')
+            else:
+                print('data value is none')
+
+    def file_02(self):
+        for data in self.__catalog_file():
+            if getattr(data, '__iter__', None):
+                for line in data:
+                    if line[11:13] == b'02':
                         try:
                             yield line.decode(encoding='utf-8').rstrip('\n').split('|')
                         except EOFError:

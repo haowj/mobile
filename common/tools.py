@@ -42,7 +42,7 @@ class CommonTool:
                 try:
                     for line in f:
                         yield line
-                except:
+                except EOFError:
                     pass
         else:
             print('the path [{}] is not exist!'.format(path))

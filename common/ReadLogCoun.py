@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from common.reads import ReadFile
 
 class ReadFile:
     def __init__(self, data, catalog=None, city=None):
@@ -88,6 +88,20 @@ class ReadFile:
                                         ]
 
 
-class OsCreateCatalog:
-    def __init__(self):
+class OsCreateCatalog(ReadFile):
+    """
+       创建多级目录继续日志文件拆分
+       一级目录：省份
+       二级目录：时刻-24个时间段划分
+       三级目录：日志类型（001-资源原始数据，002-运行周期原始数据，003-收视原始数据，004-告警原始数据）
+       四级目录：日期
+    """
+    def __init__(self, catalog, city, types, date):
+        super(OsCreateCatalog, self).__init__(catalog)
+        self.catalog = catalog
+        self.city = city
+        self.type = types
+        self.date = date
+
+    def read_file_00(self):
         pass
