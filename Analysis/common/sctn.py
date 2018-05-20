@@ -5,8 +5,7 @@ db = CommonTool.db_mysql_connect()
 
 
 class CreateSelectTN:
-    def __init__(self, catalog, data_list):
-        self.catalog = catalog
+    def __init__(self, catalog=None, data_list=None):
         self.catalog = catalog
         if os.path.basename(catalog) == 'ALARM':
             self.BASE_TOW = '004'
@@ -37,3 +36,11 @@ class CreateSelectTN:
         self.db.commit()
         return tn
 
+    def read_file(self, path):
+        with open(path, 'r') as data:
+            for line in data:
+                yield line.rstrip('\n').split('|')
+                # try:
+                #     yield line.decode(encoding='utf-8').rstrip('\n').split('|')
+                # except UnicodeDecodeError:
+                #     yield line.decode(encoding='gbk').rstrip('\n').split('|')

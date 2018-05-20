@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="mobile_application@192.168.1.222" uuid="3f682562-1367-4b42-93ad-074932eee82d">
+    <data-source source="LOCAL" name="pain@localhost" uuid="3f682562-1367-4b42-93ad-074932eee82d">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://192.168.1.222:3306/mobile_application</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/pain</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

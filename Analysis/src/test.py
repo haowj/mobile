@@ -1,23 +1,17 @@
 # -*- coding: utf-8 -*-
-from common.tools import CommonTool
+from common.sctn import CreateSelectTN
 
-data = CommonTool(r'E:\数据\hubei_20180425\PERIODIC')
-data_file = data.file_sn_list()
+data = CreateSelectTN(r'D:\hena')
+fie = data.read_file(r'D:\hena\00')
 
-
-def test_yi():
-    for d in range(9):
-        yield d
-d = test_yi()
-
-
-def tb():
-    while 1:
-        try:
-            print(next(d))
-        except StopIteration:
-            break
-
-
-if __name__ == "__main__":
-    tb()
+db_name = 't_001'
+sql_ = ""
+sql = u"""insert into %s values %s"""
+# for i in fie:
+#     print(i)
+try:
+    for i in range(7600):
+         sql_ += "," + str(tuple(next(fie)))
+    print(sql % (db_name, sql_))
+except StopIteration:
+    print(sql % (db_name, sql_))

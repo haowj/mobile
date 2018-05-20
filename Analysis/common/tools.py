@@ -112,7 +112,8 @@ class CommonTool:
 
     @staticmethod
     def db_mysql_connect():
-        return pymysql.connect("192.168.1.222", "root", "cmcc123", "mobile_application", charset="utf8")
+        #return pymysql.connect("192.168.1.222", "root", "cmcc123", "mobile_application", charset="utf8")
+        return pymysql.connect("localhost", "root", "123456", "pain", charset="utf8")
 
     @staticmethod
     def db_oracle_connect():
