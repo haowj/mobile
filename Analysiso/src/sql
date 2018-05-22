@@ -1,0 +1,27 @@
+ALTER TABLE `app_relation`.`t_mobile_mapping`
+DROP COLUMN `Updatetime`,
+CHANGE COLUMN `RecordSnCatalog` `CtiyName` VARCHAR(20) NOT NULL ,
+CHANGE COLUMN `SNID` `CtiyCode` VARCHAR(20) NOT NULL ,
+RENAME TO  `app_relation`.`t_mobile_ctiy_code` ;
+
+
+ALTER TABLE `t_mobile_ctiy_code`
+CHANGE COLUMN `CtiyName` `SnCode` VARCHAR(20) NOT NULL ,
+CHANGE COLUMN `CtiyCode` `SNID` VARCHAR(20) NOT NULL ,
+RENAME TO `t_mobile_sn_code` ;
+
+
+CREATE TABLE `t_mobile_ctiy_code` (
+  `ID` INT NOT NULL,
+  `CtiyCode` VARCHAR(45) NOT NULL,
+  `CtiyName` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+mysql> create table user(
+    -> userid int(4) primary key not null auto_increment,
+    -> username varchar(16) not null,
+    -> userpassword varchar(32) not null
+    -> );
